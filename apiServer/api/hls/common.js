@@ -2,6 +2,28 @@ const ffmpeg = require('fluent-ffmpeg'),
     { spawn } = require('child_process'),
     request = require('request'),
     colors = require('colors-console')
+
+/**
+ * 生成封面
+ * @param filePath mp4路径
+ * @param savePath 保存封面路径 **.jpg
+ * @param second 截取第几秒的画面
+ */
+function getCover(filePath, savePath, second){
+    // ffmpeg -i test.asf -y -f image2 -t 0.001 -s 352x240 a.jpg
+    let option = [
+        '-i', filePath,
+        '-y',
+        '-f', 'image2',
+        '-t', second,
+        savePath
+    ]
+    const spawnObj = spawn(global.config.ffmpeg, option, {encoding: 'utf-8'});
+
+    spawnObj.on('exit', (code) => {
+        console.log(colors(['green'], '[√]生成封面'), savePath)
+    })
+}
 /**
  * 生成m3u8文件
  * @quality 画质npm
@@ -9,7 +31,7 @@ const ffmpeg = require('fluent-ffmpeg'),
  * @m3u8FileName m3u8 存储的位置
  * @callback 回调地址
  */
-function gm3u8(quality, fileName, m3u8FileName, callback){
+function gm3u8(quality, fileName, m3u8FileName, callback, coverImage = null){
     if (global.mq >= global.config.taskCount){ //查看任务进程
         setTimeout( ()=>{
             gm3u8(quality, fileName, m3u8FileName, callback)
@@ -31,6 +53,16 @@ function gm3u8(quality, fileName, m3u8FileName, callback){
         const spawnObj = spawn(global.config.ffmpeg, option, {encoding: 'utf-8'});
 
         spawnObj.on('exit', (code) => {
+            //生成封面
+            if(coverImage !== null){
+                for(let i in coverImage){
+                    getCover(
+                        coverImage[i].filePath,
+                        coverImage[i].savePath,
+                        coverImage[i].second
+                    )
+                }
+            }
             global.mq--
             global.log('HLS-NEW',m3u8FileName)
             console.log(colors(['green'], '[√]生成新的HLS'), global.mq + '/' + global.config.taskCount, m3u8FileName)
@@ -65,5 +97,6 @@ function isUrl(str) {
 module.exports = {
     gm3u8,
     getDirectoryName,
-    isUrl
+    isUrl,
+    getCover
 }

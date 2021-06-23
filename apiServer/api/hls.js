@@ -27,8 +27,8 @@ async function main(ctx, next) {
             return false
         }
     }
-
     if (query.way === 'disk') { //入参是硬盘地址
+        console.log("disk")
        await diskToHLS(ctx)
                 .then( res => {
                     returnRight(ctx, res)
@@ -44,13 +44,15 @@ async function main(ctx, next) {
                     returnRight(ctx, res)
                 })
                 .catch( err =>{
-                    returnErr(ctx, err)
+                    returnErr(ctx, err.msg, err.code)
                 })
         return false
     } else {
+        console.log("asdfaf")
         returnErr(ctx)
         return false
     }
+
 
 
 }
@@ -58,11 +60,11 @@ async function main(ctx, next) {
 
 
 //正常返回
-function returnRight(ctx, hlsAddress){
+function returnRight(ctx, result){
     ctx.status = 200
     ctx.body = {
         "code": "200",
-        "data": hlsAddress,
+        "data": result,
         "msg": null
     }
 }

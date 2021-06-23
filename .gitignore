@@ -1,3 +1,4 @@
 *.mp4
 .idea
 *.log
+.DS_Store

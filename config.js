@@ -20,8 +20,8 @@ function main(){
         //流媒体服务器地址，仅支持m3u8
         mediaServer:{
             //使用正式的域名，如果用域名访问请指向 dev.mediaDisk 根目录
-            // domain : 'http://127.0.0.1:8080',
-            domain:`http://${dev.apiServer.ip}:${dev.apiServer.port}`,
+            domain : 'http://127.0.0.1:8080',
+            // domain:`http://${this}:${this}`,
 
             //四种画面品质，系统选择 baseline | extended | main | high
             liveAddress:"baseline", //流畅选择
@@ -34,4 +34,4 @@ function main(){
     return dev
 }
 
-module.exports = main
+module.exports = main()

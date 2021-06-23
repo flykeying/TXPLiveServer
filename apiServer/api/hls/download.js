@@ -9,7 +9,7 @@ const fetch = require("node-fetch"),
  * @param fileSavePath 保存地址
  * @returns {Promise<true/false>}
  */
-function download(fileURL, fileSavePath, query, filesArr){
+function download(fileURL, fileSavePath, query, filesArr, coverImage){
     let tmpFileSavePath = fileSavePath + ".tmp"
     return new Promise((resolve, reject) => {
         //创建写入流
@@ -36,7 +36,8 @@ function download(fileURL, fileSavePath, query, filesArr){
                 global.config.mediaServer.hdAddress,
                 fileSavePath,
                 filesArr.file + filesArr.fileName + '1.m3u8',
-                query.callback
+                query.callback,
+                coverImage
             )
         })
 
