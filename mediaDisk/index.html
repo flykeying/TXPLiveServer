@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>M3U8测试</title>
+</head>
+<script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/hls.js/8.0.0-beta.3/hls.min.js"></script>
+<style>
+	body{
+		background-color: aliceblue;
+	}
+	.box{
+		width: 475px;
+		margin: 0 auto;
+		margin-top: 50px;
+		background-color: #333333;
+		padding: 5px;
+		border-radius: 10px;
+		box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+		-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	}
+	input{
+		outline: 0px;
+		background-color: #dddddd;
+		width:460px;
+		padding: 10px 5px;
+		text-align: center;
+	}
+	video{
+		border-radius: 10px;
+	}
+</style>
+<body>
+<div class="box">
+	<div>
+		<input type="text" id="url" placeholder="请输入M3U8地址" style="">
+	</div>
+	<div>
+		<video
+				ref="video"
+				id="video"
+				src=""
+				autoplay="true"
+				controls="true"
+				ishowProcessView="true"
+				x5-playsinline=""
+				playsinline=""
+				webkit-playsinline=""
+				x5-video-player-type="h5"
+				x5-video-player-fullscreen="false"
+				direction="0"
+				show-play-btn="true"
+				object-fit="cover"
+				style="width:480px;height:270px "
+		></video>
+	</div>
+</div>
+
+</body>
+<script>
+    var video = document.getElementsByTagName('video')[0]
+    video.oncanplay = function(){
+        video.play();
+    };
+    function videoInit(url) {
+        var hls = ""
+        hls = new Hls()
+        hls.loadSource(url)
+        hls.attachMedia(video)
+    }
+
+
+    //所需单据绑定回车键
+    $('#url').bind('keydown',function(event){
+        let url = $('#url').val()
+        if(event.keyCode == "13" && url.length>0){
+            if(isUrl(url)){
+                videoInit(url)
+            }else{
+                alert('URL不合法')
+            }
+        }
+    })
+
+
+    //判断是否为URL
+    function isUrl(str) {
+        let v = new RegExp('^(?!mailto:)(?:(?:http|https|ftp)://|//)(?:\\S+(?::\\S*)?@)?(?:(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[0-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))|localhost)(?::\\d{2,5})?(?:(/|\\?|#)[^\\s]*)?$', 'i');
+        return v.test(str);
+    }
+</script>
+</html>

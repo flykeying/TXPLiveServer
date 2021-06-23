@@ -1,0 +1,29 @@
+{
+  "name": "live-pull-server",
+  "version": "1.0.0",
+  "description": "流媒体拉流服务器，支持媒体格式化",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./apiServer/index",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "media",
+    "server",
+    "pull"
+  ],
+  "author": "WOS",
+  "license": "ISC",
+  "dependencies": {
+    "colors-console": "^1.0.3",
+    "fluent-ffmpeg": "^2.1.2",
+    "koa": "^2.13.1",
+    "koa-bodyparser-base": "0.0.3",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
+    "node-fetch": "^2.6.1",
+    "progress-stream": "^2.0.0",
+    "request": "^2.88.2"
+  }
+}
