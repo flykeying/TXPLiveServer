@@ -90,6 +90,51 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "/update 上传文件转m3u8",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "EKSXVqWOvMQ3C3T1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/wos/Desktop/live-server/mediaDisk/test/space.mp4"
+						},
+						{
+							"key": "callback",
+							"value": "http://127.0.0.1:8080/version?id=1",
+							"type": "text"
+						},
+						{
+							"key": "cover",
+							"value": "1,100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
