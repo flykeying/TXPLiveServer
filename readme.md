@@ -7,6 +7,8 @@
 - URL下载转码
 - multipart/form-data方式上传转码
 
+> 系统只支持转成m3u8格式，m3u8格式适合android和ios播放，rmtp只能在android播放
+
 ## 系统依赖
 - [ffmpeg](https://github.com/FFmpeg/FFmpeg)
 
