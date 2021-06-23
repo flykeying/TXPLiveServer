@@ -17,7 +17,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/hls?way=disk&uri=/Users/wos/Desktop/live-server/temp/space.mp4&callback=http://127.0.0.1:8080/version?id=1",
+					"raw": "http://localhost:8080/hls?way=disk&uri=/Users/wos/Desktop/live-server/mediaDisk/test//space.mp4&callback=http://127.0.0.1:8080/version?id=1&cover=1,10000",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -33,11 +33,15 @@
 						},
 						{
 							"key": "uri",
-							"value": "/Users/wos/Desktop/live-server/temp/space.mp4"
+							"value": "/Users/wos/Desktop/live-server/mediaDisk/test//space.mp4"
 						},
 						{
 							"key": "callback",
 							"value": "http://127.0.0.1:8080/version?id=1"
+						},
+						{
+							"key": "cover",
+							"value": "1,10000"
 						}
 					]
 				}
@@ -48,13 +52,39 @@
 			"name": "/hls URL内部文件解析",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "EKSXVqWOvMQ3C3T1",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "?url=http://localhost:8080/temp/space.mp4",
+					"raw": "http://localhost:8080/hls?uri=http://localhost:8080/test/space.mp4&way=url&callback=http://127.0.0.1:8080/version?id=1&cover=1,10000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hls"
+					],
 					"query": [
 						{
-							"key": "url",
-							"value": "http://localhost:8080/temp/space.mp4"
+							"key": "uri",
+							"value": "http://localhost:8080/test/space.mp4"
+						},
+						{
+							"key": "way",
+							"value": "url"
+						},
+						{
+							"key": "callback",
+							"value": "http://127.0.0.1:8080/version?id=1"
+						},
+						{
+							"key": "cover",
+							"value": "1,10000"
 						}
 					]
 				}
