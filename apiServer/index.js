@@ -8,18 +8,24 @@ const Koa = require('koa'),
     serve = require('koa-static'),
     bodyParser = require('koa-bodyparser-base'),
     colors = require('colors-console'),
-    check = require('./common/check')
+    check = require('./common/check'),
+    koaBody = require('koa-body')
 
 //版本查询
 router.get('/version',  require('./api/version'))
 router.get('/hls',  require('./api/hls'))
-
+router.post('/upload',  require('./api/upload'))
 
 app.use(cors())
 app.use(bodyParser())
-// app.use(serve(__dirname + "/static"))
 app.use(serve(global.config.mediaDisk))
 app.use(check)
+app.use(koaBody({
+    multipart: true,
+    formidable: {
+        maxFileSize: 200000*1024*1024    // 设置上传文件大小最大限制，默认2M
+    }
+}));
 app.use(router.routes())
 app.use(router.allowedMethods())
 

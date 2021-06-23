@@ -1,5 +1,4 @@
-const ffmpeg = require('fluent-ffmpeg'),
-    { spawn } = require('child_process'),
+const { spawn } = require('child_process'),
     request = require('request'),
     colors = require('colors-console')
 
@@ -94,9 +93,26 @@ function isUrl(str) {
     return v.test(str);
 }
 
+/**
+ * 文件是否存在
+ * @param filePath 硬盘地址
+ * @returns {true|false}
+ */
+function isFileExisted(filePath) {
+    return new Promise(function (resolve, reject) {
+        fs.access(filePath, (err) => {
+            if (err) {
+                reject(false);
+            } else {
+                resolve(true);
+            }
+        })
+    })
+}
 module.exports = {
     gm3u8,
     getDirectoryName,
     isUrl,
-    getCover
+    getCover,
+    isFileExisted
 }

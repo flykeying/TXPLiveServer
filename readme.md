@@ -2,6 +2,14 @@
 
 流媒体拉流服务器，支持媒体格式化.用于上传MP4视频后，转码成m3u8（高清或标清），返回拉流地址，可以通过拉流播放
 
+三种生成方式
+- 服务器本地路径转码
+- URL下载转码
+- multipart/form-data方式上传转码
+
+## 系统依赖
+- [ffmpeg](https://github.com/FFmpeg/FFmpeg)
+
 ## 安装
 > npm install
 
@@ -51,6 +59,13 @@ POST请求，为JSON体
     + @uri 资源位置，对应@way的方式
     + @cover 数组，截取封面
     + @callback 格式化m3u8任务完成后，回调地址，例如：http://localhost/version?id=12
+
+- POST /update multipart/form-data方式上传
+    + @file 资源位置
+    + @cover 数组，截取封面
+    + @callback 格式化m3u8任务完成后，回调地址，例如：http://localhost/version?id=12
+
+
 ```json
 {
     "code": "200",

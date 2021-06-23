@@ -48,13 +48,9 @@ async function main(ctx, next) {
                 })
         return false
     } else {
-        console.log("asdfaf")
         returnErr(ctx)
         return false
     }
-
-
-
 }
 
 
