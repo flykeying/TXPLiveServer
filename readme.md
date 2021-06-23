@@ -80,7 +80,3 @@ POST请求，为JSON体
     "msg": null
 }
 ```
-
-### 授权
-
-商业授权，请联系作者 flykeying@126.com
