@@ -13,7 +13,12 @@
 - [ffmpeg](https://github.com/FFmpeg/FFmpeg)
 
 ## 安装
-> npm install
+
+```shell
+npm install
+//配置 config.js
+node test.js //检查配置
+```
 
 ## 启动
 > npm start
