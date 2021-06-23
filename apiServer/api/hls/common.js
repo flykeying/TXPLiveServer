@@ -32,7 +32,7 @@ function gm3u8(quality, fileName, m3u8FileName, callback){
 
         spawnObj.on('exit', (code) => {
             global.mq--
-            global.log('[HLS-NEW]',m3u8FileName)
+            global.log('HLS-NEW',m3u8FileName)
             console.log(colors(['green'], '[√]生成新的HLS'), global.mq + '/' + global.config.taskCount, m3u8FileName)
             request(callback + "&quality=" + quality + "&t=" + Date.parse(new Date()))
         })

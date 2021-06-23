@@ -12,7 +12,6 @@ function urlToHLS (ctx){
         fs.mkdirSync(filesArr.file,{
             recursive: true
         })
-        console.log(filesArr)
         //2 - 下载文件
         let result = await download(query.uri, filesArr.file + filesArr.fileName + '.mp4', query, filesArr)
         if (result){
