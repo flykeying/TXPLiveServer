@@ -13,7 +13,7 @@
     "pull"
   ],
   "author": "WOS",
-  "license": "ISC",
+  "license": "AGPL-3.0",
   "dependencies": {
     "colors-console": "^1.0.3",
     "fluent-ffmpeg": "^2.1.2",
