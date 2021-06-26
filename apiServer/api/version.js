@@ -1,4 +1,5 @@
-async function main(ctx, next) {
+const package = require('../../package')
+function main(ctx, next) {
     const query = ctx.query
     console.log(query)
 
@@ -6,8 +7,7 @@ async function main(ctx, next) {
     ctx.body = {
         "code": "200",
         "data": {
-            "version":"1.0.0",
-            "versionCode":10000
+            "version":package.version
         },
         "msg": null
     }

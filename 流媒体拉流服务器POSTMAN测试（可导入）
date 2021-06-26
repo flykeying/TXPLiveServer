@@ -205,6 +205,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "查询版本，用于回调",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/version",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"version"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -1,18 +1,24 @@
-# 流媒体拉流服务器(NODE版) - TXPPullServer
+# TXPPullServer 流媒体服务器
 
-流媒体拉流服务器，支持媒体格式化.用于上传MP4视频后，转码成m3u8（高清或标清），返回拉流地址，可以通过拉流播放。
-自带一套推拉流服务器，可以支持直播中推拉流，并通过api录制成MP4文件
+> 原名：流媒体拉流服务器，随着各位支持的深入，增加了很多功能。现在已经不单单是推流服务器了，同时兼备了推拉流的业务
 
-三种生成方式
-- 服务器本地路径转码
-- URL下载转码
-- multipart/form-data方式上传转码
-- 通过推拉流生成媒体文件
+主要功能
+
+ - 直播推拉流
+    + 推拉流服务
+    + 加密推流
+    + 视频录制功能
+ - 为媒体文件转码成M3U8格式文件实现拉流服务，通过以下三种生成方式生成M3U8文件：
+    + 服务器本地路径转码
+    + URL下载转码
+    + multipart/form-data方式上传转码
 
 
-> 系统只支持转成m3u8格式，m3u8格式适合android和ios播放，rmtp只能在android播放
+> 系统只支持转成m3u8格式，m3u8格式适合android和ios播放，rmtp部分手机机型播放有限制
 
-## 系统依赖
+
+
+## 系统服务依赖
 - [ffmpeg](https://github.com/FFmpeg/FFmpeg)
 
 ## 安装
@@ -23,18 +29,23 @@ npm install
 node test.js //检查配置
 ```
 
-## 启动
-> npm start
-
 ## 测试
 > npm run test
+
+
+## 启动
+> npm start //运行api服务
+> npm run live  //运行推拉流服务器，如不需要推拉流服务可不运行
+
 
 ## 设置
 
 - ./config.js 全局配置
-- ./apiServer/fillterRouter 配置不需要token验证的过滤路由地址
+- ./apiServer/fillterRouter 配置不需要token验证的过滤路由地址（如不修改接口无需改变）
 
 ## API列表
+
+> ./流媒体拉流服务器POSTMAN测试（可导入）是一个postman文件，可导入，内部有所有接口测试数据
 
 ### 请求
 

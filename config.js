@@ -1,7 +1,7 @@
 const path = require('path')
 
 function main(){
-    const dev = {
+    const result = {
         //指明FFmpeg位置
         ffmpeg : '/usr/local/bin/ffmpeg',
 
@@ -48,7 +48,7 @@ function main(){
         //日志存储位置
         logDir: path.resolve(__dirname,'./logs'),
     }
-    return dev
+    return result
 }
 
 module.exports = main()
