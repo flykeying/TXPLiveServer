@@ -1,5 +1,5 @@
 {
-  "name": "live-pull-server",
+  "name": "txp-live-server",
   "version": "2.1.0",
   "description": "流媒体拉流服务器，支持媒体格式化",
   "main": "index.js",
