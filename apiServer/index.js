@@ -15,6 +15,7 @@ const Koa = require('koa'),
 router.get('/version',  require('./api/version'))
 router.get('/hls',  require('./api/hls'))
 router.post('/upload',  require('./api/upload'))
+router.get('/recording',  require('./api/recording'))
 
 app.use(cors())
 app.use(bodyParser())

@@ -1,10 +1,11 @@
 {
   "name": "live-pull-server",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "流媒体拉流服务器，支持媒体格式化",
   "main": "index.js",
   "scripts": {
     "start": "node ./apiServer/index",
+    "live": "node ./live/index",
     "test": "node test.js"
   },
   "keywords": [
@@ -16,6 +17,7 @@
   "license": "AGPL-3.0",
   "dependencies": {
     "colors-console": "^1.0.3",
+    "ffmpeg": "0.0.4",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
     "koa-bodyparser-base": "0.0.3",
@@ -23,6 +25,7 @@
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
     "node-fetch": "^2.6.1",
+    "node-media-server": "^2.2.8",
     "progress-stream": "^2.0.0",
     "request": "^2.88.2"
   }
