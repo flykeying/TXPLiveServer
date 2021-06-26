@@ -30,6 +30,9 @@ function main(){
         live:{
             //拉流服务端口地址 推流上来后，通过这个接口拉流 例如 http://192.168.1.179:8000/live/自己定义的密钥 可获取到直播流 m3u8地址
             port:8000,
+            //是否开启加密推流
+            secret:false,
+            privateKey:"EKSXVqWOvMQ3C3T1",
             //直播缓存地址
             mediaroot:path.resolve(__dirname,'./live/media/'),
             //推流服务器配置

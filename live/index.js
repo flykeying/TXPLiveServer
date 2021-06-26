@@ -20,6 +20,14 @@ const config = {
         ]
     }
 }
+//是否开启推流加密
+if (cfg.live.secret){
+    config.auth = {
+        play: true,
+        publish: true,
+        secret: cfg.live.privateKey
+    }
+}
 var nms= new NodeMediaServer(config)
 nms.run()
 

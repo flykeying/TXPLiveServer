@@ -1,6 +1,6 @@
 {
   "name": "live-pull-server",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "流媒体拉流服务器，支持媒体格式化",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
     "koa-router": "^10.0.0",
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
+    "md5": "^2.3.0",
     "node-fetch": "^2.6.1",
     "node-media-server": "^2.2.8",
     "progress-stream": "^2.0.0",

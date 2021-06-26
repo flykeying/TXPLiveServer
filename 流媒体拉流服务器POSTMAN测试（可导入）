@@ -170,6 +170,41 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "加密推流获取sign",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "EKSXVqWOvMQ3C3T1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/liveSign?endTimestamp=1624701820&roomName=wos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"liveSign"
+					],
+					"query": [
+						{
+							"key": "endTimestamp",
+							"value": "1624701820"
+						},
+						{
+							"key": "roomName",
+							"value": "wos"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

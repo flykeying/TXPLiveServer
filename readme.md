@@ -61,7 +61,8 @@ POST请求，为JSON体
 40503 | 硬盘文件不存在
 40504 | 下载错误或文件不存在，无法创建任务
 40505 | 系统仅支持m3u8格式
-
+40506 | 房间名称必须存在
+40507 | 必须规定直播结束时间
 
 - GET /version 获取服务器版本号
 - GET /hls
@@ -139,3 +140,48 @@ npm run live
 ```
 
 > 录制并不生成M3U8文件，用户可根据回调自行判断是否生成m3u8文件或封面
+
+## 推流加密
+> 2.0版本推拉流地址是公开的，其他用户可以通过拉流地址计算推流地址，在2.1版本中加入推拉流鉴权的功能
+
+如需开启推流加密，配置config.js中 live.secret = true
+- GET /liveSign
+    + @endTimestamp 结束直播的时间戳，注意不是毫秒级时间戳！！！
+    + @roomName 房间名称
+
+入参：
+```url
+http://localhost:8080/liveSign?endTimestamp=1624701820&roomName=wos
+```
+出参
+```json
+{
+    "code": "200",
+    "data": {
+        "sign": "1624701820-81be5df8e39a40a0602490e74cb3d517"
+    },
+    "msg": null
+}
+```
+推流地址就是
+```json
+rtmp://ip:1935/live/wos?sign=1624701820-81be5df8e39a40a0602490e74cb3d517
+```
+
+
+
+## 推拉流服务器相关的API
+
+- 获取服务器资源 http://localhost:8000/api/server
+- 推流状况 http://localhost:8000/api/streams
+- 大屏数据展示 http://localhost:8000/admin/
+
+如需关闭大屏数据展示接口，请使用nginx反向代理8000后，自定义过滤
+```nginx
+location ~ / {
+    if ( $query_string ~* ^(.*)?s=/admin ){
+        return 555;
+    }
+}
+...
+```
