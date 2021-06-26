@@ -6,6 +6,14 @@ const { spawn } = require('child_process'),
 function main(ctx, next) {
     const query = ctx.query
 
+    //判断是否为m3u8格式文件
+    let tmp = query.m3u8.split('.')
+    let suffix = tmp[tmp.length-1]
+    if(suffix !== 'm3u8'){
+        returnErr(ctx, '系统仅支持m3u8格式',40505)
+        return false
+    }
+
     let filesArr = getDirectoryName()
     //1 - 创建目录
     fs.mkdirSync(filesArr.file,{
@@ -40,6 +48,16 @@ function main(ctx, next) {
             result:true
         },
         "msg": '开始录制'
+    }
+}
+
+//参数错误
+function returnErr(ctx, msg = '参数错误',code = 40500){
+    ctx.status = 500
+    ctx.body = {
+        "code": code,
+        "data": {},
+        "msg": msg
     }
 }
 
